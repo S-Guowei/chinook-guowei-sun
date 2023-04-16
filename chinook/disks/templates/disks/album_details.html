@@ -1,0 +1,24 @@
+{% if album %}
+    <h2> {{album.title}} </h2>
+    <h3> by {{album.artist}} </h3>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Composer(s)</td>
+            <td>Duration(min:sec)</td>
+            <td>Size(Mbs)</td>
+            <td>Unit Price(€)</td>
+        </tr>
+        {% for track in album.track_set.all %}
+            <tr>
+                <td>{{track.name}}</td>
+                <td>{{track.composer}}</td>
+                <td>{{track.duration}}</td>
+                <td>{{track.size_in_Mb}}</td>
+                <td>{{track.unitPrice}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+{% endif %}
+
+<a href="{% url 'disks:albums' %}"> Back to album list </a>

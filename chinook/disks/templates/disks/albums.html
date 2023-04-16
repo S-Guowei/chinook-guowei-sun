@@ -1,0 +1,17 @@
+{% if albums %}
+    <h2> The list of albums </h2>
+    <table border="1">
+        <tr>
+            <td style="text-align:center;"> Album </td>
+            <td style="text-align:center;"> Artist </td>
+        <tr>
+        {% for album in albums %}
+            <tr>
+                <td> <a href="{% url 'disks:album_details' album.id %}"> {{album.title}} </a></td>
+                <td> {{album.artist}}<td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h1> No album available.</h1>
+{% endif %}

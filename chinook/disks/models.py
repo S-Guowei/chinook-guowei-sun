@@ -13,6 +13,15 @@ class Track(models.Model):
     def __str__(self):
         return self.name
     
+    def duration(self):
+        minutes = self.milliseconds / 60000
+        seconds = (self.milliseconds % 60000) / 1000
+        return f'%d:%02d' % (minutes,seconds)
+    
+    def size_in_Mb(self):
+        return f'%.02f' % (self.bytes/1048576)
+    
+    
 class Album(models.Model):
 
     title = models.CharField(max_length=200)
